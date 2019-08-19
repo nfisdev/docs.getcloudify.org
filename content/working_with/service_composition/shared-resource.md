@@ -24,10 +24,14 @@ cloudify.relationships.depends_on_shared_resource and cloudify.relationships.con
 
 ## Support in topology widget
 
-* For a node of type SharedResource a quick navigation button to it's deployment page, which becomes available only after the node's deployment is created
-via the deployment page (when the connection is established from the SharedResource to it's deployment).
+For a quick and simple observability to a SharedResource two new buttons where added, please note that this feature is available
+for a single instance node and after the connection is established from the SharedResource to it's deployment:
 
-![Topology View Example]( /images/service_composition/component_sharedresource_topology_view.png )
+* A quick navigation button to it's deployment page, which becomes available only after the node's deployment is created
+via the deployment page.
+* Expand toplogy button will exapnd the topology of the Component's deployment in the current view, which can also expaned inner-Components from an expanded Component.
+
+![Deployment Topology View Example]( /images/service_composition/component_sharedresource_topology_view.png )
 
 ## Node type:
 
@@ -51,7 +55,7 @@ via the deployment page (when the connection is established from the SharedResou
    * `password`: Cloudify user password.
    * `token`: Cloudify user token.
    * `tenant`: Cloudify user accessible tenant name.
- 
+
 **Runtime properties:**
 
 These are the used runtime properties for the *internal implementation*:

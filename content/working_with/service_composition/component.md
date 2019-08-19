@@ -81,19 +81,22 @@ node_templates:
                 default_instances: 2
 {{< /highlight >}}
 
-## Support in topology widget
+## Support in a deployment topology view
 
-* For a node of type Component a quick navigation button to it's deployment page, which becomes available only after it's deployment is created
-via the deployment page of the node.
+For a quick and simple observability to a Component two new buttons where added, please note that this feature is available
+for a single instance node and only after it's deployment is created:
 
-![Topology View Example]( /images/service_composition/component_sharedresource_topology_view.png )
+* A quick navigation button to the Component's deployment page.
+* Expand toplogy button will exapnd the topology of the Component's deployment in the current view, which can also expaned inner-Components from an expanded Component.  
+
+![Deployment Topology View Example]( /images/service_composition/component_sharedresource_topology_view.png )
 
 ## Lifecycle - install and uninstall
 
 In install workflow the following lifecycle flow will be executed for a node of type Component (or derives from it):
 
 * Blueprint: If a blueprint source was provided (blueprint_archive and main_file_name settings with external_resource flag was not set), it will be uploaded.
-If existing blueprint is chosen, the access to it will be verified. Also the node runtime properties blueprint related will be propagated. 
+If existing blueprint is chosen, the access to it will be verified. Also the node runtime properties blueprint related will be propagated.
 * Secrets: All secrets will be uploaded to the Cloudify Manager (using the default or given client settings), *notice* that on any collision with existing secrets this step will fail.
 Also the node runtime properties secrets related will be propagated.
 * Plugins: All supplied plugins will be uploaded if they are not already uploaded (this will be verified pre-upload).
@@ -106,7 +109,7 @@ In uninstall workflow the following lifecycle flow will be executed for a node o
 * Stopping all relevant deployments to the Component and deleting them.
 * Deleting all plugins that the Component uploaded, if they are not used by other deployments.
 * Deleting all secrets.
-* Deleting all node runtime properties of the node Component. 
+* Deleting all node runtime properties of the node Component.
 
 ## Node type:
 
